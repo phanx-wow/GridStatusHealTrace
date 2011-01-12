@@ -8,7 +8,7 @@
 ------------------------------------------------------------------------
 
 local GridStatusHealTrace = Grid:NewStatusModule( "GridStatusHealTrace" )
-local active, playerGUID, settings, spells = {}
+local active, spellOrder, playerGUID, settings, spells = {}, {}
 
 local L = setmetatable( {}, { __index = function( t, k )
 	if not k then return "" end
@@ -16,6 +16,20 @@ local L = setmetatable( {}, { __index = function( t, k )
 	t[ k ] = v
 	return v
 end } )
+
+--[[
+	L["Heal trace"] = ""
+	L["Hold time"] = ""
+	L["Show the status for this many seconds."] = ""
+	L["Add new spell"] = ""
+	L["Add another healing spell to trace."] = ""
+	L["<spell name or spell ID>"] = ""
+	L["Remove spell"] = ""
+	L["Remove a spell from the trace list"] = ""
+	L["Remove %s from the trace list."] = ""
+--]]
+
+------------------------------------------------------------------------
 
 GridStatusHealTrace.defaultDB = {
 	alert_healTrace = {
@@ -38,29 +52,61 @@ for _, spellID in ipairs( {
 	GridStatusHealTrace.defaultDB.alert_healTrace.spells[ name ] = icon
 end
 
-local spellOrder = {}
+------------------------------------------------------------------------
 
-local function addSpell( spell, icon )
-	local name
-	if spell:match( "^%d+$" ) then
-		local spellName, _, spellIcon = GetSpellInfo( tonumber( spell ) )
-		name, icon = spellName, spellIcon
-	else
-		name = spell
-		if type( icon ) ~= "string" then
-			icon = nil
-		end
+GridStatusHealTrace.statusOptions = {
+	holdTime = {
+		name = L["Hold time"],
+		desc = L["Show the status for this many seconds."],
+		type = "range", min = 0.25, max = 5, step = 0.25,
+		get = function()
+			return GridStatusHealTrace.db.profile.alert_healTrace.holdTime
+		end,
+		set = function( _, v )
+			GridStatusHealTrace.db.profile.alert_healTrace.holdTime = v
+		end,
+	},
+	addSpell = {
+		order = -2, width = "double",
+		name = L["Add new spell"],
+		desc = L["Add another healing spell to trace."],
+		type = "input", usage = L["<spell name or spell ID>"],
+		get = false,
+		set = function( _, v )
+			GridStatusHealTrace:AddSpell( string.trim( v ) )
+		end,
+	},
+	removeSpell = {
+		order = -1,
+		name = L["Remove spell"],
+		desc = L["Remove a spell from the trace list."],
+		type = "group", dialogInline = true,
+		args = {},
+	},
+}
+
+------------------------------------------------------------------------
+
+function GridStatusHealTrace:AddSpell( name, icon )
+	local id = name:match( "(%d+)" )
+	if id then
+		local _
+		name, _, icon = GetSpellInfo( tonumber( id ) )
+	elseif type( icon ) ~= "string" then
+		icon = nil
 	end
 
-	GridStatusHealTrace.db.profile.alert_healTrace.spells[ name ] = icon or true
+	if not name then return end
 
-	GridStatusHealTrace.extraOptions.removeSpell.args[ name ] = {
-		name = string.format( "|T%s|t %s", icon, name ),
-		desc = string.format( L["Remove %s from being traced."], name ),
+	self.db.profile.alert_healTrace.spells[ name ] = icon or true
+
+	self.statusOptions.removeSpell.args[ name ] = {
+		name = string.format( "|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon, name ),
+		desc = string.format( L["Remove %s from the trace list."], name ),
 		type = "execute",
 		func = function()
-			GridStatusHealTrace.db.profile.alert_healTrace.spells[ name ] = nil
-			GridStatusHealTrace.extraOptions.removeSpell.args[ name ] = nil
+			self.db.profile.alert_healTrace.spells[ name ] = nil
+			self.statusOptions.removeSpell.args[ name ] = nil
 		end,
 	}
 
@@ -68,45 +114,22 @@ local function addSpell( spell, icon )
 		spellOrder[ name ] = true
 		spellOrder[ #spellOrder + 1 ] = name
 		table.sort( spellOrder )
-		for i = 1, #spellOrder then
-			GridStatusHealTrace.extraOptions.removeSpell.args[ name ].order = i
+		for i = 1, #spellOrder do
+			self.statusOptions.removeSpell.args[ spellOrder[ i ] ].order = i
 		end
 	end
 end
 
-GridStatusHealTrace.extraOptions = {
-	holdTime = {
-		name = L["Hold time"],
-		desc = L["Seconds to show the status"],
-		type = "range", min = 0.25, max = 5, step = 0.25,
-		get = function() return GridStatusHealTrace.db.profile.alert_healTrace.holdTime end,
-		set = function( _, v ) GridStatusHealTrace.db.profile.alert_healTrace.holdTime = v end,
-	},
-	addSpell = {
-		order = -2,
-		name = L["Add new spell"],
-		desc = L["Adds a new spell to the status module"],
-		type = "input", usage = L["<spell name or spell ID>"],
-		get = false,
-		set = function( _, v ) addSpell( string.trim( v ) ) end,
-	},
-	removeSpell = {
-		order = -1,
-		name = L["Delete spell"],
-		desc = L["Deletes an existing spell from the status module"],
-		type = "group", dialogInline = true,
-		args = {},
-	},
-}
+------------------------------------------------------------------------
 
 function GridStatusHealTrace:PostInitialize()
-	self:RegisterStatus( "alert_healTrace", L["Heal Trace"], self.extraOptions, true )
+	self:RegisterStatus( "alert_healTrace", L["Heal trace"], self.statusOptions, true )
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
 
 	for name, icon in pairs( spells ) do
-		addSpell( name, icon )
+		self:AddSpell( name, icon )
 	end
 end
 
@@ -128,17 +151,19 @@ function GridStatusHealTrace:PostReset()
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
-	for name in pairs( self.extraOptions.removeSpell.args ) do
+	for name in pairs( self.statusOptions.removeSpell.args ) do
 		if not spells[ name ] then
-			self.extraOptions.removeSpell.args[ name ] = nil
+			self.statusOptions.removeSpell.args[ name ] = nil
 		end
 	end
 	for name, icon in pairs( spells ) do
-		if not self.extraOptions.removeSpell.args[ name ] then
-			addSpell( name, icon )
+		if not self.statusOptions.removeSpell.args[ name ] then
+			self:AddSpell( name, icon )
 		end
 	end
 end
+
+------------------------------------------------------------------------
 
 local timerFrame = CreateFrame( "Frame" )
 timerFrame:Hide()
@@ -165,7 +190,7 @@ function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, s
 	local spellIcon = spells[ spellName ]
 	if type( spellIcon ) == "boolean" then
 		local _, _, icon = GetSpellInfo( spellID )
-		self.extraOptions.removeSpell.args[ spellName ].icon = icon
+		self.statusOptions.removeSpell.args[ spellName ].icon = icon
 		spells[ spellName ] = icon
 		spellIcon = icon
 	end
