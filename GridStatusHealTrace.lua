@@ -3,6 +3,7 @@
 --	Shows who was healed by your multi-target heals.
 --	by Akkorian < akkorian@hotmail.com >
 --	Inspired by GridStatusChainWho by Llyra
+--	Copyright © 2010–2011 Akkorian. Some rights reserved. See LICENSE.txt for details.
 --	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 --	http://wow.curse.com/downloads/wow-addons/details/gridstatushealtrace.aspx
 ------------------------------------------------------------------------
