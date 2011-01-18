@@ -5,6 +5,8 @@
 ## Notes: Shows who was healed by your multi-target heals.
 ## Author: Akkorian
 ## X-Email: akkorian@hotmail.com
+## X-Copyright: Copyright © 2010–2011 Akkorian
+## X-License: Some rights reserved. See LICENSE.txt for details.
 ## X-Website: http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 ## X-Curse-Project-ID: gridstatushealtrace
 ## X-WoWI: 16608
