@@ -18,17 +18,17 @@ local L = setmetatable( {}, { __index = function( t, k )
 	return v
 end } )
 
---[[
-	L["Heal trace"] = ""
-	L["Hold time"] = ""
-	L["Show the status for this many seconds."] = ""
-	L["Add new spell"] = ""
-	L["Add another healing spell to trace."] = ""
-	L["<spell name or spell ID>"] = ""
-	L["Remove spell"] = ""
-	L["Remove a spell from the trace list"] = ""
-	L["Remove %s from the trace list."] = ""
---]]
+if GetLocale() == "esES" or GetLocale() == "esMX" then
+	L["Heal Trace"] = "Sanaciones seguimiento"
+	L["Hold time"] = "Tiempo para mostrar"
+	L["Show the status for this many seconds."] = "Mostrar el estado por estos segundos."
+	L["Add new spell"] = "Añadir hechizo"
+	L["Add another healing spell to trace."] = "Añadir otro hechizo de curación para seguir."
+	L["<spell name or spell ID>"] = "<nombre o ID de hechizo>"
+	L["Remove spell"] = "Eliminar hechizo"
+	L["Remove a spell from the trace list"] = "Eliminar un hechizo de la lista de seguimiento."
+	L["Remove %s from the trace list."] = "Eliminar %s de la lista de seguimiento."
+end
 
 ------------------------------------------------------------------------
 
@@ -124,7 +124,7 @@ end
 ------------------------------------------------------------------------
 
 function GridStatusHealTrace:PostInitialize()
-	self:RegisterStatus( "alert_healTrace", L["Heal trace"], self.statusOptions, true )
+	self:RegisterStatus( "alert_healTrace", L["Heal Trace"], self.statusOptions, true )
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
