@@ -28,7 +28,7 @@ Localization
 GridStatusHealTrace is compatible with English, Deutsch, Español,
 Français, Русский, 한국어, 简体中文, and 正體中文 clients.
 
-GridStatusHealTrace is translated into English.
+GridStatusHealTrace is translated into English and Español.
 
 If you can provide translations for any locale, please contact me.
 

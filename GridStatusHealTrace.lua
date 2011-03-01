@@ -26,8 +26,8 @@ if GetLocale() == "esES" or GetLocale() == "esMX" then
 	L["Add another healing spell to trace."] = "Añadir otro hechizo de curación para seguir."
 	L["<spell name or spell ID>"] = "<nombre o ID de hechizo>"
 	L["Remove spell"] = "Eliminar hechizo"
-	L["Remove a spell from the trace list"] = "Eliminar un hechizo de la lista de seguimiento."
-	L["Remove %s from the trace list."] = "Eliminar %s de la lista de seguimiento."
+	L["Remove a spell from the trace list."] = "Eliminar un hechizo de la lista para seguir."
+	L["Remove %s from the trace list."] = "Eliminar %s de la lista para seguir."
 end
 
 ------------------------------------------------------------------------
