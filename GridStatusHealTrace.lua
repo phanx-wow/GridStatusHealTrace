@@ -1,9 +1,9 @@
-------------------------------------------------------------------------
+ï»¿------------------------------------------------------------------------
 --	GridStatusHealTrace
 --	Shows who was healed by your multi-target heals.
 --	by Akkorian < akkorian@hotmail.com >
 --	Inspired by GridStatusChainWho by Llyra
---	Copyright © 2010–2011 Akkorian. Some rights reserved. See LICENSE.txt for details.
+--	Copyright Â© 2010â€“2011 Akkorian. Some rights reserved. See LICENSE.txt for details.
 --	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 --	http://wow.curse.com/downloads/wow-addons/details/gridstatushealtrace.aspx
 ------------------------------------------------------------------------
@@ -19,15 +19,15 @@ local L = setmetatable( {}, { __index = function( t, k )
 end } )
 
 if GetLocale() == "esES" or GetLocale() == "esMX" then
-	L["Heal Trace"] = "Sanaciones seguimiento"
+	L["Heal Trace"] = "Rastrear sanaciones"
 	L["Hold time"] = "Tiempo para mostrar"
 	L["Show the status for this many seconds."] = "Mostrar el estado por estos segundos."
-	L["Add new spell"] = "Añadir hechizo"
-	L["Add another healing spell to trace."] = "Añadir otro hechizo de curación para seguir."
+	L["Add new spell"] = "AÃ±adir hechizo"
+	L["Add another healing spell to trace."] = "AÃ±adir un otro hechizo de sanaciÃ³n para rastrear."
 	L["<spell name or spell ID>"] = "<nombre o ID de hechizo>"
-	L["Remove spell"] = "Eliminar hechizo"
-	L["Remove a spell from the trace list."] = "Eliminar un hechizo de la lista para seguir."
-	L["Remove %s from the trace list."] = "Eliminar %s de la lista para seguir."
+	L["Remove spell"] = "Borrar hechizo"
+	L["Remove a spell from the trace list."] = "Borrar un hechizo de la lista para rastrear."
+	L["Remove %s from the trace list."] = "Borrar %s de la lista para rastrear."
 end
 
 ------------------------------------------------------------------------
@@ -55,7 +55,7 @@ end
 
 ------------------------------------------------------------------------
 
-GridStatusHealTrace.statusOptions = {
+local optionsForStatus = {
 	holdTime = {
 		name = L["Hold time"],
 		desc = L["Show the status for this many seconds."],
@@ -101,13 +101,13 @@ function GridStatusHealTrace:AddSpell( name, icon )
 
 	self.db.profile.alert_healTrace.spells[ name ] = icon or true
 
-	self.statusOptions.removeSpell.args[ name ] = {
+	optionsForStatus.removeSpell.args[ name ] = {
 		name = string.format( "|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon, name ),
 		desc = string.format( L["Remove %s from the trace list."], name ),
 		type = "execute",
 		func = function()
 			self.db.profile.alert_healTrace.spells[ name ] = nil
-			self.statusOptions.removeSpell.args[ name ] = nil
+			optionsForStatus.removeSpell.args[ name ] = nil
 		end,
 	}
 
@@ -116,7 +116,7 @@ function GridStatusHealTrace:AddSpell( name, icon )
 		spellOrder[ #spellOrder + 1 ] = name
 		table.sort( spellOrder )
 		for i = 1, #spellOrder do
-			self.statusOptions.removeSpell.args[ spellOrder[ i ] ].order = i
+			optionsForStatus.removeSpell.args[ spellOrder[ i ] ].order = i
 		end
 	end
 end
@@ -124,7 +124,7 @@ end
 ------------------------------------------------------------------------
 
 function GridStatusHealTrace:PostInitialize()
-	self:RegisterStatus( "alert_healTrace", L["Heal Trace"], self.statusOptions, true )
+	self:RegisterStatus( "alert_healTrace", L["Heal Trace"], optionsForStatus, true )
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
@@ -152,13 +152,13 @@ function GridStatusHealTrace:PostReset()
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
-	for name in pairs( self.statusOptions.removeSpell.args ) do
+	for name in pairs( optionsForStatus.removeSpell.args ) do
 		if not spells[ name ] then
-			self.statusOptions.removeSpell.args[ name ] = nil
+			optionsForStatus.removeSpell.args[ name ] = nil
 		end
 	end
 	for name, icon in pairs( spells ) do
-		if not self.statusOptions.removeSpell.args[ name ] then
+		if not optionsForStatus.removeSpell.args[ name ] then
 			self:AddSpell( name, icon )
 		end
 	end
@@ -185,27 +185,58 @@ timerFrame:SetScript( "OnUpdate", function( self, elapsed )
 	end
 end )
 
-function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID, spellName )
-	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
+if GetBuildInfo():match( "^4%.1%." ) then 
 
-	local spellIcon = spells[ spellName ]
-	if type( spellIcon ) == "boolean" then
-		local _, _, icon = GetSpellInfo( spellID )
-		self.statusOptions.removeSpell.args[ spellName ].icon = icon
-		spells[ spellName ] = icon
-		spellIcon = icon
+	function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID, spellName )
+		if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
+
+		local spellIcon = spells[ spellName ]
+		if type( spellIcon ) == "boolean" then
+			local _, _, icon = GetSpellInfo( spellID )
+			optionsForStatus.removeSpell.args[ spellName ].icon = icon
+			spells[ spellName ] = icon
+			spellIcon = icon
+		end
+
+		self.core:SendStatusGained(destGUID, "alert_healTrace",
+			settings.priority,
+			settings.range,
+			settings.color,
+			spellName,
+			nil,
+			nil,
+			spellIcon
+		)
+
+		active[ destGUID ] = settings.holdTime
+		timerFrame:Show()
 	end
 
-	self.core:SendStatusGained(destGUID, "alert_healTrace",
-		settings.priority,
-		settings.range,
-		settings.color,
-		spellName,
-		nil,
-		nil,
-		spellIcon
-	)
+else
 
-	active[ destGUID ] = settings.holdTime
-	timerFrame:Show()
+	function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID, spellName )
+		if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
+
+		local spellIcon = spells[ spellName ]
+		if type( spellIcon ) == "boolean" then
+			local _, _, icon = GetSpellInfo( spellID )
+			optionsForStatus.removeSpell.args[ spellName ].icon = icon
+			spells[ spellName ] = icon
+			spellIcon = icon
+		end
+
+		self.core:SendStatusGained(destGUID, "alert_healTrace",
+			settings.priority,
+			settings.range,
+			settings.color,
+			spellName,
+			nil,
+			nil,
+			spellIcon
+		)
+
+		active[ destGUID ] = settings.holdTime
+		timerFrame:Show()
+	end
+
 end
