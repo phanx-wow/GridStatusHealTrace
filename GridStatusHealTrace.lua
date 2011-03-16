@@ -19,7 +19,7 @@ local L = setmetatable( {}, { __index = function( t, k )
 end } )
 
 if GetLocale() == "esES" or GetLocale() == "esMX" then
-	L["Heal Trace"] = "Rastrear sanaciones"
+	L["Heal Trace"] = "Sanaciones rastreados"
 	L["Hold time"] = "Tiempo para mostrar"
 	L["Show the status for this many seconds."] = "Mostrar el estado por estos segundos."
 	L["Add new spell"] = "Añadir hechizo"
@@ -102,7 +102,7 @@ function GridStatusHealTrace:AddSpell( name, icon )
 	self.db.profile.alert_healTrace.spells[ name ] = icon or true
 
 	optionsForStatus.removeSpell.args[ name ] = {
-		name = string.format( "|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon, name ),
+		name = string.format( "|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon or "", name ),
 		desc = string.format( L["Remove %s from the trace list."], name ),
 		type = "execute",
 		func = function()
