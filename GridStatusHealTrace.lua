@@ -185,58 +185,27 @@ timerFrame:SetScript( "OnUpdate", function( self, elapsed )
 	end
 end )
 
-if GetBuildInfo():match( "^4%.1%." ) then 
+function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, sourceFlags2, destGUID, destName, destFlags, destFlags2, spellID, spellName )
+	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
 
-	function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID, spellName )
-		if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
-
-		local spellIcon = spells[ spellName ]
-		if type( spellIcon ) == "boolean" then
-			local _, _, icon = GetSpellInfo( spellID )
-			optionsForStatus.removeSpell.args[ spellName ].icon = icon
-			spells[ spellName ] = icon
-			spellIcon = icon
-		end
-
-		self.core:SendStatusGained(destGUID, "alert_healTrace",
-			settings.priority,
-			settings.range,
-			settings.color,
-			spellName,
-			nil,
-			nil,
-			spellIcon
-		)
-
-		active[ destGUID ] = settings.holdTime
-		timerFrame:Show()
+	local spellIcon = spells[ spellName ]
+	if type( spellIcon ) == "boolean" then
+		local _, _, icon = GetSpellInfo( spellID )
+		optionsForStatus.removeSpell.args[ spellName ].icon = icon
+		spells[ spellName ] = icon
+		spellIcon = icon
 	end
 
-else
+	self.core:SendStatusGained(destGUID, "alert_healTrace",
+		settings.priority,
+		settings.range,
+		settings.color,
+		spellName,
+		nil,
+		nil,
+		spellIcon
+	)
 
-	function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED( _, timestamp, event, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, spellID, spellName )
-		if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[ spellName ] then return end
-
-		local spellIcon = spells[ spellName ]
-		if type( spellIcon ) == "boolean" then
-			local _, _, icon = GetSpellInfo( spellID )
-			optionsForStatus.removeSpell.args[ spellName ].icon = icon
-			spells[ spellName ] = icon
-			spellIcon = icon
-		end
-
-		self.core:SendStatusGained(destGUID, "alert_healTrace",
-			settings.priority,
-			settings.range,
-			settings.color,
-			spellName,
-			nil,
-			nil,
-			spellIcon
-		)
-
-		active[ destGUID ] = settings.holdTime
-		timerFrame:Show()
-	end
-
+	active[ destGUID ] = settings.holdTime
+	timerFrame:Show()
 end
