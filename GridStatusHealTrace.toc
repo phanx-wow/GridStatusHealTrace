@@ -5,11 +5,12 @@
 ## Notes: Shows in Grid who was healed by your multi-target heals.
 ## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
 ## Notes-esMX: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
+## Notes-ptBR: Mostra no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
 ## Author: Akkorian
 ## X-Email: akkorian@hotmail.com
 ## X-Copyright: Copyright © 2010–2011 Akkorian
 ## X-License: Some rights reserved. See LICENSE.txt for details.
-## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, koKR, ruRU, zhCN, zhTW
+## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, ptBR, koKR, ruRU, zhCN, zhTW
 ## X-Localizations: enUS, esES, esMX
 ## X-Website: http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 ## X-Curse-Project-ID: gridstatushealtrace

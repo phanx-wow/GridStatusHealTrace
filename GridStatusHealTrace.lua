@@ -28,6 +28,16 @@ if GetLocale() == "esES" or GetLocale() == "esMX" then
 	L["Remove spell"] = "Borrar hechizo"
 	L["Remove a spell from the trace list."] = "Borrar un hechizo de la lista para rastrear."
 	L["Remove %s from the trace list."] = "Borrar %s de la lista para rastrear."
+elseif GetLocale() == "ptBR" then
+	L["Heal Trace"] = "Curas rastreado"
+	L["Hold time"] = "Tempo para mostrar"
+	L["Show the status for this many seconds."] = "Mostrar o estado para isso muitos segundos."
+	L["Add new spell"] = "Adicionar feitiço"
+	L["Add another healing spell to trace."] = "Adicionar outra feitiço de cura para rastrear."
+	L["<spell name or spell ID>"] = "<nome ou ID de feitiço>"
+	L["Remove spell"] = "Remover feitiço"
+	L["Remove a spell from the trace list."] = "Remover um feitiço à lista para rastrear."
+	L["Remove %s from the trace list."] = "Remover %s à lista para rastrear."
 end
 
 ------------------------------------------------------------------------
@@ -57,6 +67,7 @@ end
 
 local optionsForStatus = {
 	holdTime = {
+		order = -3, width = "double",
 		name = L["Hold time"],
 		desc = L["Show the status for this many seconds."],
 		type = "range", min = 0.25, max = 5, step = 0.25,
