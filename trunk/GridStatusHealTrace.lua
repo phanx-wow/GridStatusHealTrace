@@ -65,12 +65,15 @@ end
 
 ------------------------------------------------------------------------
 
+local hasAuraEditBox = type(LibStub("AceGUI-3.0").WidgetVersions["Aura_EditBox"]) == "number"
+
 local optionsForStatus = {
 	holdTime = {
 		order = -3, width = "double",
 		name = L["Hold time"],
 		desc = L["Show the status for this many seconds."],
 		type = "range", min = 0.25, max = 5, step = 0.25,
+		dialogControl = hasAuraEditBox and "Aura_EditBox" or nil,
 		get = function()
 			return GridStatusHealTrace.db.profile.alert_healTrace.holdTime
 		end,
