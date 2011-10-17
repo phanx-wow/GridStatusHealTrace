@@ -65,7 +65,7 @@ end
 
 ------------------------------------------------------------------------
 
-local hasAuraEditBox = type(LibStub("AceGUI-3.0").WidgetVersions["Aura_EditBox"]) == "number"
+local hasAuraEditBox = type( LibStub("AceGUI-3.0").WidgetVersions["Aura_EditBox"] ) == "number"
 
 local optionsForStatus = {
 	holdTime = {
@@ -73,7 +73,6 @@ local optionsForStatus = {
 		name = L["Hold time"],
 		desc = L["Show the status for this many seconds."],
 		type = "range", min = 0.25, max = 5, step = 0.25,
-		dialogControl = hasAuraEditBox and "Aura_EditBox" or nil,
 		get = function()
 			return GridStatusHealTrace.db.profile.alert_healTrace.holdTime
 		end,
@@ -86,6 +85,7 @@ local optionsForStatus = {
 		name = L["Add new spell"],
 		desc = L["Add another healing spell to trace."],
 		type = "input", usage = L["<spell name or spell ID>"],
+		dialogControl = hasAuraEditBox and "Aura_EditBox" or nil,
 		get = false,
 		set = function( _, v )
 			GridStatusHealTrace:AddSpell( string.trim( v ) )
