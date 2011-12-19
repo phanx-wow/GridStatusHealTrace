@@ -5,7 +5,7 @@ by Akkorian <akkorian@hotmail.com>
 Maintained by Phanx <addons@phanx.net>
 Copyright © 2010–2011 Akkorian. Some rights reserved. See LICENSE.txt for details.
 http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
-http://wow.curse.com/downloads/wow-addons/details/gridstatushealtrace.aspx
+http://www.curse.com/addons/wow/gridstatushealtrace
 
 
 Features
