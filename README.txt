@@ -1,48 +1,68 @@
 GridStatusHealTrace
 ====================
 
-by Akkorian <akkorian@hotmail.com>
-Maintained by Phanx <addons@phanx.net>
-Copyright © 2010–2011 Akkorian. Some rights reserved. See LICENSE.txt for details.
-http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
-http://www.curse.com/addons/wow/gridstatushealtrace
+* Copyright (c) 2012 Phanx <addons@phanx.net>. All rights reserved.
+* See the accompanying LICENSE file for license terms.
+* http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
+* http://www.curse.com/addons/wow/gridstatushealtrace
 
 
 Features
 --------
 
-GridStatusHealTrace adds a status to Grid to show you who was just
-healed by your multi-target healing spells.
+GridStatusHealTrace adds a status to Grid to show you who was healed by
+your multi-target healing spells.
 
 By default, it traces healing from Chain Heal, Circle of Healing, Divine
 Hymn, Holy Nova, and Light of Dawn. You can add other heals to trace in
-the status menu, under Grid > Status > Heal trace > Add new spell.
+the status menu, under Grid > Statuses > Heal trace > Add new spell.
 
-GridStatusHealTrace is loosely based on the old GridStatusChainWho by
-Llyra, but it can be shown on icon indicators, it doesn’t show crits
-separately, and the spells are configurable.
+
+Dependencies
+------------
+
+GridStatusHealingReduced is a plugin for Grid, and does nothing by
+itself. The latest version of Grid can be downloaded from:
+
+* http://www.wowinterface.com/downloads/info5747-Grid.html
+* http://www.curse.com/addons/wow/grid
 
 
 Localization
 ------------
 
-GridStatusHealTrace is compatible with English, Deutsch, Español,
-Français, Português, Русский, 한국어, 简体中文, and 正體中文 clients.
+Compatible with English, Deutsch, Español (EU), Español (AL), Français,
+Italiano, Português, Русский, 한국어, 简体中文, and 正體中文 game clients.
 
-GridStatusHealTrace is translated into English, Español, and Português.
+Translated into English, Español, and Português.
 
-If you can provide translations for any locale, please send me a PM, or
-enter them using the CurseForge localization system:
+To add or update translations for any language, see the Localization tab
+on the CurseForge project page:
 
-* http://wow.curseforge.com/addons/gridstatushealtrace/localization/
+http://wow.curseforge.com/addons/gridstatushealtrace/localization/
 
 
 Feedback
 --------
 
-To report a bug or request a feature, please use the ticket tracker on
-either download site. For general questions or feedback, feel free to
-post a comment on either download site.
+Bugs, errors, or other problems:
+	Submit a bug report ticket on either download page.
 
-If you need to contact me privately, you can send me a private message
-on either download site, or email me at <addons@phanx.net>.
+Feature requests or other suggestions:
+	Submit a feature request ticket system on either download page.
+
+General questions or comments:
+	Post a comment on either download page.
+
+If you need to contact me privately for a reason other than those listed
+above, you can send me a private message on either download site, or
+email me at <addons@phanx.net>.
+
+
+Credits
+-------
+
+GridStatusHealTrace is loosely based on the old GridStatusChainWho by
+Llyra, but it can be shown on icon indicators, it doesn't show crits
+separately, and the spells are configurable. It was originally written
+by Akkorian.
