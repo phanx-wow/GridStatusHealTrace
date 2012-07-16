@@ -10,19 +10,24 @@ GridStatusHealTrace
 Features
 --------
 
-GridStatusHealTrace adds a status to Grid to show you who was healed by
-your multi-target healing spells.
+GridStatusHealTrace adds a status to Grid to show you who was healed
+by your multi-target healing spells.
 
-By default, it traces healing from Chain Heal, Circle of Healing, Divine
-Hymn, Holy Nova, and Light of Dawn. You can add other heals to trace in
-the status menu, under Grid > Statuses > Heal trace > Add new spell.
+By default, it traces healing from Chain Heal, Chi Burst, Chi Torpedo,
+Chi Wave, Circle of Healing, Divine Hymn, Healing Sphere, Holy Nova,
+Holy Radiance, Light of Dawn, Tranquility, Uplift, and Wild Mushroom:
+Bloom. When you heal a group member with one of these spells, the status
+will briefly appear to show you where your healing went.
+
+You can configure how long the status is shown, or add other healing
+spells to trace in the Grid options menu for the status.
 
 
 Dependencies
 ------------
 
-GridStatusHealingReduced is a plugin for Grid, and does nothing by
-itself. The latest version of Grid can be downloaded from:
+Obviously, you need Grid installed in order for this to do anything!
+You can get the latest version of Grid here:
 
 * http://www.wowinterface.com/downloads/info5747-Grid.html
 * http://www.curse.com/addons/wow/grid
@@ -34,7 +39,8 @@ Localization
 Compatible with English, Deutsch, Español (EU), Español (AL), Français,
 Italiano, Português, Русский, 한국어, 简体中文, and 繁體中文 game clients.
 
-Translated into English, Español, and Português.
+Translated into English, Deutsch, Español, Français, Italiano, Português,
+and 한국어.
 
 To add or update translations for any language, see the Localization tab
 on the CurseForge project page:
@@ -52,7 +58,7 @@ Feature requests or other suggestions:
 	Submit a feature request ticket system on either download page.
 
 General questions or comments:
-	Post a comment on either download page.
+	Post a comment on the WoWInterface download page.
 
 If you need to contact me privately for a reason other than those listed
 above, you can send me a private message on either download site, or
