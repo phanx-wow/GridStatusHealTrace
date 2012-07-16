@@ -1,22 +1,27 @@
 ## Interface: 50001
-## Version: 5.0.1.wowi:revision-beta
+## Version: 5.0.3.wowi:revision-beta
 
 ## Title: GridStatus Heal Trace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
-## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curaci�n de objetivos m�ltiples.
-## Notes-esMX: Muestra en Grid que fue sanada por tus hechizos de curaci�n de objetivos m�ltiples.
-## Notes-ptBR: Mostra no Grid que foi curado por seu feiti�os de cura de m�ltiplos alvos.
+## Notes-deDE: Zeigt auf Grid die durch Eure Heilungszauber der mehrerer Ziele geheilt wurde.
+## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
+## Notes-esMX: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
+## Notes-frFR: Montrer sur Grid qui avait été soigné par vos sorts de soins multi-cibles.
+## Notes-itIT: Mostra sulla Grid che è stato curato dalle tue incantesimi curative di obiettivi multipli.
+## Notes-ptBR: Mostra no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
+## Notes-koKR: 당신의 다중 대상에 대한 치유를 표시합니다.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Credits: Originally written by Akkorian.
 ## X-Copyright: Copyright (c) 2012 Phanx. All rights reserved.
 ## X-License: Some rights reserved. See LICENSE.txt for details.
 ## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW
-## X-Localizations: enUS, esES, esMX, ptBR
+## X-Localizations: enUS, deDE, esES, esMX, frFR, itIT, koKR, ptBR
 ## X-Website: http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 ## X-Curse-Project-ID: gridstatushealtrace
 ## X-WoWI: 16608
 
 ## Dependencies: Grid
 
+Localization.lua
 GridStatusHealTrace.lua

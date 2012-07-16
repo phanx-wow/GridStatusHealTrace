@@ -1,47 +1,17 @@
 ﻿--[[--------------------------------------------------------------------
 	GridStatusHealTrace
-	Shows who was healed by your multi-target heals.
+	Shows in Grid who was healed by your multi-target heals.
 	Copyright (c) 2012 Phanx <addons@phanx.net>. All rights reserved.
 	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 	http://www.curse.com/addons/wow/gridstatushealtrace
 ----------------------------------------------------------------------]]
 
+local _, ns = ...
+local L = ns.L
+
 local GridStatusHealTrace = Grid:NewStatusModule("GridStatusHealTrace")
 local active, spellOrder, playerGUID, settings, spells = {}, {}
-
-local L = setmetatable({}, { __index = function(t, k)
-	if not k then return "" end
-	local v = tostring(k)
-	t[k] = v
-	return v
-end })
-
-do
-	local LOCALE = GetLocale()
-	if LOCALE == "esES" or LOCALE == "esMX" then
-		L["Heal Trace"] = "Sanaciones rastreados"
-		L["Hold time"] = "Tiempo para mostrar"
-		L["Show the status for this many seconds."] = "Mostrar el estado por estos segundos."
-		L["Add new spell"] = "Añadir hechizo"
-		L["Add another healing spell to trace."] = "Añadir un otro hechizo de sanación para rastrear."
-		L["<spell name or spell ID>"] = "<nombre o ID de hechizo>"
-		L["Remove spell"] = "Borrar hechizo"
-		L["Remove a spell from the trace list."] = "Borrar un hechizo de la lista para rastrear."
-		L["Remove %s from the trace list."] = "Borrar %s de la lista para rastrear."
-
-	elseif LOCALE == "ptBR" then
-		L["Heal Trace"] = "Curas rastreado"
-		L["Hold time"] = "Tempo para mostrar"
-		L["Show the status for this many seconds."] = "Mostrar o estado para isso muitos segundos."
-		L["Add new spell"] = "Adicionar feitiço"
-		L["Add another healing spell to trace."] = "Adicionar outra feitiço de cura para rastrear."
-		L["<spell name or spell ID>"] = "<nome ou ID de feitiço>"
-		L["Remove spell"] = "Remover feitiço"
-		L["Remove a spell from the trace list."] = "Remover um feitiço à lista para rastrear."
-		L["Remove %s from the trace list."] = "Remover %s à lista para rastrear."
-	end
-end
 
 ------------------------------------------------------------------------
 
@@ -56,11 +26,19 @@ GridStatusHealTrace.defaultDB = {
 	}
 }
 for _, spellID in ipairs({
-	1064,  -- Chain Heal
-	34861, -- Circle of Healing
-	64844, -- Divine Hymn
-	15237, -- Holy Nova
-	85222, -- Light of Dawn
+	1064,   -- Chain Heal
+	130654, -- Chi Burst
+	124040, -- Chi Torpedo
+	115106, -- Chi Wave
+	34861,  -- Circle of Healing
+	64844,  -- Divine Hymn
+	115464, -- Healing Sphere
+	23455,  -- Holy Nova
+	82327,  -- Holy Radiance
+	85222,  -- Light of Dawn
+	44203,  -- Tranquility
+	116670, -- Uplift
+	102792, -- Wild Mushroom: Bloom
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
 	GridStatusHealTrace.defaultDB.alert_healTrace.spells[name] = icon
@@ -109,35 +87,44 @@ local optionsForStatus = {
 
 ------------------------------------------------------------------------
 
-function GridStatusHealTrace:AddSpell(name, icon)
-	local id, _ = name:match("(%d+)")
-	if id then
-		name, _, icon = GetSpellInfo(tonumber(id))
-	elseif type(icon) ~= "string" then
-		icon = nil
+do
+	local function removeSpell_func = function(info)
+		self:RemoveSpell(info.arg)
 	end
 
-	if not name then return end
-
-	self.db.profile.alert_healTrace.spells[name] = icon or true
-
-	optionsForStatus.removeSpell.args[name] = {
-		name = string.format("|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon or "", name),
-		desc = string.format(L["Remove %s from the trace list."], name),
-		type = "execute",
-		func = function()
-			self.db.profile.alert_healTrace.spells[name] = nil
-			optionsForStatus.removeSpell.args[name] = nil
-		end,
-	}
-
-	if not spellOrder[name] then
-		spellOrder[name] = true
-		spellOrder[#spellOrder + 1] = name
-		table.sort(spellOrder)
-		for i = 1, #spellOrder do
-			optionsForStatus.removeSpell.args[spellOrder[i]].order = i
+	function GridStatusHealTrace:AddSpell(name, icon)
+		local id, _ = name:match("(%d+)")
+		if id then
+			name, _, icon = GetSpellInfo(tonumber(id))
+		elseif type(icon) ~= "string" then
+			icon = nil
 		end
+
+		if not name then return end
+
+		self.db.profile.alert_healTrace.spells[name] = icon or true
+
+		optionsForStatus.removeSpell.args[name] = {
+			name = string.format("|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon or "", name),
+			desc = string.format(L["Remove %s from the trace list."], name),
+			type = "execute",
+			func = removeSpell_func,
+			arg = name,
+		}
+
+		if not spellOrder[name] then
+			spellOrder[name] = true
+			spellOrder[#spellOrder + 1] = name
+			table.sort(spellOrder)
+			for i = 1, #spellOrder do
+				optionsForStatus.removeSpell.args[spellOrder[i]].order = i
+			end
+		end
+	end
+
+	function GridStatusHealTrace:RemoveSpell(name)
+		self.db.profile.alert_healTrace.spells[name] = nil
+		optionsForStatus.removeSpell.args[name] = nil
 	end
 end
 
@@ -206,13 +193,15 @@ timerFrame:SetScript("OnUpdate", function(self, elapsed)
 end)
 
 function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED(_, timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, sourceFlags2, destGUID, destName, destFlags, destFlags2, spellID, spellName)
-	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[spellName] then return end
+	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[spellName] then
+		return
+	end
 
 	local spellIcon = spells[spellName]
 	if type(spellIcon) == "boolean" then
-		local _, _, icon = GetSpellInfo(spellID)
-		optionsForStatus.removeSpell.args[spellName].icon = icon
-		spells[spellName] = icon
+		local name, _, icon = GetSpellInfo(spellID)
+		self:RemoveSpell(name)
+		self:AddSpell(name, icon)
 		spellIcon = icon
 	end
 
