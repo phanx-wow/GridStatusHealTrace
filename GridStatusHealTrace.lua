@@ -41,7 +41,9 @@ for _, spellID in ipairs({
 	102792, -- Wild Mushroom: Bloom
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
-	GridStatusHealTrace.defaultDB.alert_healTrace.spells[name] = icon
+	if name then
+		GridStatusHealTrace.defaultDB.alert_healTrace.spells[name] = icon
+	end
 end
 
 ------------------------------------------------------------------------
@@ -88,7 +90,7 @@ local optionsForStatus = {
 ------------------------------------------------------------------------
 
 do
-	local function removeSpell_func = function(info)
+	local function removeSpell_func(info)
 		self:RemoveSpell(info.arg)
 	end
 
