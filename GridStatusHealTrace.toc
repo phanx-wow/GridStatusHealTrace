@@ -3,12 +3,12 @@
 
 ## Title: GridStatus Heal Trace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
-## Notes-deDE: Zeigt auf Grid die durch Eure Heilungszauber der mehrerer Ziele geheilt wurde.
-## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
-## Notes-esMX: Muestra en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
-## Notes-frFR: Montrer sur Grid qui avait été soigné par vos sorts de soins multi-cibles.
-## Notes-itIT: Mostra sulla Grid che è stato curato dalle tue incantesimi curative di obiettivi multipli.
-## Notes-ptBR: Mostra no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
+## Notes-deDE: Zeige auf Grid die durch Eure Heilungszauber der mehrerer Ziele geheilt wurde.
+## Notes-esES: Mostrar en Grid que fue sanada por sus hechizos de curación de objetivos múltiples.
+## Notes-esMX: Mostrar en Grid que fue sanada por tus hechizos de curación de objetivos múltiples.
+## Notes-frFR: Afficher no Grid que foi curado por seu feitiços de cura de múltiplos alvos..
+## Notes-itIT: Mostrare sulla Grid che è stato curato dalle tue incantesimi curative di obiettivi multipli.
+## Notes-ptBR: Mostrar no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
 ## Notes-koKR: 당신의 다중 대상에 대한 치유를 표시합니다.
 ## Author: Phanx
 ## X-Email: addons@phanx.net
