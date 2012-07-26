@@ -27,7 +27,7 @@ GridStatusHealTrace.defaultDB = {
 }
 for _, spellID in ipairs({
 	-- Druid
-	44203,  -- Tranquility
+--	44203,  -- Tranquility
 	102792, -- Wild Mushroom: Bloom
 	-- Monk
 	130654, -- Chi Burst
@@ -36,6 +36,8 @@ for _, spellID in ipairs({
 	115464, -- Healing Sphere
 	116670, -- Uplift
 	-- Paladin
+	114852, -- Holy Prism (enemy target)
+	114871, -- Holy Prism (friendly target)
 	82327,  -- Holy Radiance
 	85222,  -- Light of Dawn
 	-- Priest

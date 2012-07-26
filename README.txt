@@ -1,5 +1,5 @@
 GridStatusHealTrace
-====================
+===================
 
 * Copyright (c) 2012 Phanx <addons@phanx.net>. All rights reserved.
 * See the accompanying LICENSE file for license terms.
@@ -10,27 +10,46 @@ GridStatusHealTrace
 Features
 --------
 
-GridStatusHealTrace adds a status to Grid to show you who was healed
-by your multi-target healing spells.
+GridStatusHealTrace adds a status to Grid that appears briefly when you
+heal a group member with a multi-target or AoE healing spell.
 
-By default, it traces healing from Chain Heal, Chi Burst, Chi Torpedo,
-Chi Wave, Circle of Healing, Divine Hymn, Healing Sphere, Holy Nova,
-Holy Radiance, Light of Dawn, Tranquility, Uplift, and Wild Mushroom:
-Bloom. When you heal a group member with one of these spells, the status
-will briefly appear to show you where your healing went.
+By default, the following spells are traced:
+
+* Druid
+	* [Wild Mushroom: Bloom](http://mop.wowhead.com/spell=102791)
+* Monk
+	* [Chi Burst](http://mop.wowhead.com/spell=123986)
+	* [Chi Torpedo](http://mop.wowhead.com/spell=115008)
+	* [Chi Wave](http://mop.wowhead.com/spell=115098)
+	* [Healing Sphere](http://mop.wowhead.com/spell=115460)
+	* [Uplift](http://mop.wowhead.com/spell=116670)
+* Paladin
+	* [Arcing Light](http://mop.wowhead.com/spell=119952)
+	* [Holy Prism](http://mop.wowhead.com/spell=114165)
+	* [Holy Radiance](http://www.wowhead.com/spell=82327)
+	* [Light of Dawn](http://www.wowhead.com/spell=85222)
+* Priest
+	* [Cascade](http://mop.wowhead.com/spell=121135)
+	* [Circle of Healing](http://www.wowhead.com/spell=34861)
+	* [Divine Hymn](http://www.wowhead.com/spell=64843)
+	* [Divine Star](http://mop.wowhead.com/spell=110744)
+	* [Halo](http://mop.wowhead.com/spell=120517)
+	* [Holy Nova](http://www.wowhead.com/spell=15237)
+	* [Prayer of Healing](http://www.wowhead.com/spell=596)
+* Shaman
+	* [Chain Heal](http://www.wowhead.com/spell=1064)
 
 You can configure how long the status is shown, or add other healing
 spells to trace in the Grid options menu for the status.
-
 
 Dependencies
 ------------
 
 Obviously, you need Grid installed in order for this to do anything!
-You can get the latest version of Grid here:
+Get the latest version of Grid on [WoWInterface] [1] or [Curse] [2].
 
-* http://www.wowinterface.com/downloads/info5747-Grid.html
-* http://www.curse.com/addons/wow/grid
+[1]: http://www.wowinterface.com/downloads/info5747-Grid.html
+[2]: http://www.curse.com/addons/wow/grid
 
 
 Localization
@@ -42,10 +61,11 @@ Italiano, Português, Русский, 한국어, 简体中文, and 繁體中文 
 Translated into English, Deutsch, Español, Français, Italiano, Português,
 and 한국어.
 
-To add or update translations for any language, see the Localization tab
-on the CurseForge project page:
+To add or update translations for any language, enter them on the
+[GridStatusHealTrace localization page] [3] on WowAce, and then send me
+a PM on either download site to let me know you’ve made changes.
 
-http://wow.curseforge.com/addons/gridstatushealtrace/localization/
+[3]: http://wow.curseforge.com/addons/gridstatushealtrace/localization/
 
 
 Feedback
