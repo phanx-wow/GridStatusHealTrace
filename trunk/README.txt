@@ -10,8 +10,8 @@ GridStatusHealTrace
 Features
 --------
 
-GridStatusHealTrace adds a status to Grid that appears briefly when you
-heal a group member with a multi-target or AoE healing spell.
+GridStatusHealTrace adds a status to Grid that activates briefly when
+you heal a group member with a multi-target or AoE healing spell.
 
 By default, the following spells are traced:
 
