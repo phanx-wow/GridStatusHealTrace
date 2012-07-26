@@ -26,19 +26,31 @@ GridStatusHealTrace.defaultDB = {
 	}
 }
 for _, spellID in ipairs({
-	1064,   -- Chain Heal
+	-- Druid
+	44203,  -- Tranquility
+	102792, -- Wild Mushroom: Bloom
+	-- Monk
 	130654, -- Chi Burst
 	124040, -- Chi Torpedo
 	115106, -- Chi Wave
-	34861,  -- Circle of Healing
-	64844,  -- Divine Hymn
 	115464, -- Healing Sphere
-	23455,  -- Holy Nova
+	116670, -- Uplift
+	-- Paladin
 	82327,  -- Holy Radiance
 	85222,  -- Light of Dawn
-	44203,  -- Tranquility
-	116670, -- Uplift
-	102792, -- Wild Mushroom: Bloom
+	-- Priest
+	121148, -- Cascade
+	34861,  -- Circle of Healing
+	64844,  -- Divine Hymn
+	110745, -- Divine Star (holy version)
+	122128, -- Divine Star (shadow version)
+	120692, -- Halo (holy version)
+	120696, -- Halo (shadow version)
+	23455,  -- Holy Nova
+--	88686,  -- Holy Word: Sanctuary
+	596,    -- Prayer of Healing
+	-- Shaman
+	1064,   -- Chain Heal
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
 	if name then
