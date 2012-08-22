@@ -1,4 +1,4 @@
-Copyright (c) 2010-2012 A. Mordecai <akkorian@hotmail.com>, Phanx <addons@phanx.net>
+Copyright (c) 2010-2012 A. Mordecai <akkorian@hotmail.com>, A. "Phanx" Kinley <addons@phanx.net>
 
 All rights reserved.
 
