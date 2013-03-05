@@ -1,5 +1,5 @@
-## Interface: 50100
-## Version: 5.1.0.wowi:revision
+## Interface: 50200
+## Version: 5.2.0.wowi:revision
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
@@ -10,6 +10,7 @@
 ## Notes-itIT: Mostrare sulla Grid che è stato curato dalle tue incantesimi curative di multipli obiettivi.
 ## Notes-ptBR: Mostrar no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
 ## Notes-koKR: 당신의 다중 대상에 대한 치유를 표시합니다.
+
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Credits: Originally written by Akkorian.
