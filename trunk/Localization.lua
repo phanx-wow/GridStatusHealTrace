@@ -89,3 +89,27 @@ if LOCALE == "koKR" then -- Last updated 2011-12-12 by Sayclub @ CurseForge
 	L["Remove a spell from the trace list."] = "추적 목록에서 주문을 제거합니다."
 	L["Remove %s from the trace list."] = "추적 목록에서 %s|1을;를; 제거합니다."
 return end
+
+if LOCALE == "zhCN" then -- Last updated 2012-12-05 by luomoon @ CurseForge
+	L["Heal Trace"] = "治疗追踪"
+	L["Hold time"] = "持续时间"
+	L["Show the status for this many seconds."] = "显示状态的秒数"
+	L["Add new spell"] = "添加新法术"
+	L["Add another healing spell to trace."] = "添加另一个需要追踪的治疗法术"
+	L["<spell name or spell ID>"] = "<法术名称或法术编号>"
+	L["Remove spell"] = "移除法术"
+	L["Remove a spell from the trace list."] = "从追踪列表上移除一个法术"
+	L["Remove %s from the trace list."] = "将 %s 从追踪列表上移除"
+return end
+
+if LOCALE == "zhTW" then -- Last updated 2012-12-05 by luomoon @ CurseForge
+	L["Heal Trace"] = "治療追蹤"
+	L["Hold time"] = "持續時間"
+	L["Show the status for this many seconds."] = "顯示狀態秒數"
+	L["Add new spell"] = "添加新法術"
+	L["Add another healing spell to trace."] = "添加另一個需要追蹤的法術"
+	L["<spell name or spell ID>"] = "<法術名稱或法術編號>"
+	L["Remove spell"] = "移除法術"
+	L["Remove a spell from the trace list."] = "從追蹤列表移除法術"
+	L["Remove %s from the trace list."] = "將 %s 從追蹤列表移除"
+return end
