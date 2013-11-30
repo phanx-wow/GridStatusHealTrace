@@ -1,7 +1,7 @@
 GridStatusHealTrace
 ===================
 
-* Copyright (c) 2010-2012 Akkorian, Phanx. All rights reserved.
+* Copyright (c) 2010-2013 Akkorian, Phanx. All rights reserved.
 * See the accompanying LICENSE file for license terms.
 * http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 * http://www.curse.com/addons/wow/gridstatushealtrace
@@ -88,7 +88,6 @@ email me at <addons@phanx.net>.
 Credits
 -------
 
-GridStatusHealTrace is loosely based on the old GridStatusChainWho by
-Llyra, but it can be shown on icon indicators, it doesn't show crits
-separately, and the spells are configurable. It was originally written
-by Akkorian.
+GridStatusHealTrace is loosely based on the old GridStatusChainWho by Llyra,
+but it can be shown on icon indicators, it doesn't show crits separately,
+and the spells are configurable. It was originally written by Akkorian.
