@@ -3,7 +3,7 @@
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
-## Notes-deDE: Auf Grid anzeigen, die durch Eure Heilungszauber der mehrerer Ziele geheilt wurde.
+## Notes-deDE: Auf Grid anzeigen, die durch Ihre Heilungszauber der mehrerer Ziele geheilt wurde.
 ## Notes-esES: Mostrar en Grid que fue sanada por tus hechizos de curación de múltiples objetivos.
 ## Notes-esMX: Mostrar en Grid que fue sanada por sus hechizos de curación de múltiples objetivos.
 ## Notes-frFR: Afficher dans Grid à ceux qui vie rendus par vos sorts de soins de multiples cibles.
