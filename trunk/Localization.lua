@@ -19,27 +19,27 @@ ns.L = L
 local LOCALE = GetLocale()
 
 if LOCALE == "deDE" then
-	L["Heal Trace"] = "Heilungen verfolgen"
-	L["Hold time"] = "Zeit für"
-	L["Show the status for this many seconds."] = "Zeigt den Status für diese Anzahl an Sekunden."
-	L["Add new spell"] = "Neuen Zauber hinzufügen"
-	L["Add another healing spell to trace."] = "Fügt einen neuen Heilungszauber zu der Verfolgungsliste."
-	L["<spell name or spell ID>"] = "<Namen oder ID der Heilungszauber>"
+	L["Heal Trace"] = "Heilung verfolgen"
+	L["Hold time"] = "Haltezeit"
+	L["Show the status for this many seconds."] = "Zeigt den Status für diese viele Sekunden an."
+	L["Add new spell"] = "Zauber hinzufügen"
+	L["Add another healing spell to trace."] = "Fügt einen neuen Heilungszauber hinzu, um zu verfolgen."
+	L["<spell name or spell ID>"] = "<namen oder ID des Heilungszauber>"
 	L["Remove spell"] = "Zauber entfernen"
-	L["Remove a spell from the trace list."] = "Entfert einen Heilungszauber aus der Verfolgungsliste."
-	L["Remove %s from the trace list."] = "Entfert den Heilungszauber '%s' aus der Verfolgungsliste."
+	L["Remove a spell from the trace list."] = "Entfernt einen Heilungszauber aus der Verfolgungsliste."
+	L["Remove %s from the trace list."] = "Entfernt '%s' aus der Verfolgungsliste."
 return end
 
 if LOCALE == "esES" or LOCALE == "esMX" then
 	L["Heal Trace"] = "Sanaciones seguidos"
-	L["Hold time"] = "Tiempo para mostrar"
-	L["Show the status for this many seconds."] = "Mostrar el estado por estos segundos."
+	L["Hold time"] = "Tiempo de mostrado"
+	L["Show the status for this many seconds."] = "Mostrar el estado por esta cantidad de segundos."
 	L["Add new spell"] = "Añadir hechizo"
-	L["Add another healing spell to trace."] = "Añadir un otro hechizo de sanación para seguir."
+	L["Add another healing spell to trace."] = "Añadir otro hechizo de sanación para seguir."
 	L["<spell name or spell ID>"] = "<nombre o ID de hechizo>"
-	L["Remove spell"] = "Borrar hechizo"
-	L["Remove a spell from the trace list."] = "Borrar un hechizo de la lista para seguir."
-	L["Remove %s from the trace list."] = "Borrar %s de la lista para seguir."
+	L["Remove spell"] = "Quitar hechizo"
+	L["Remove a spell from the trace list."] = "Quitar un hechizo de la lista para seguir."
+	L["Remove %s from the trace list."] = "Quitar %s de la lista para seguir."
 return end
 
 if LOCALE == "frFR" then
