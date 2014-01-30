@@ -1,14 +1,14 @@
 ## Interface: 50400
-## Version: 5.4.1.wowi:revision
+## Version: 5.4.2.wowi:revision
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
-## Notes-deDE: Auf Grid anzeigen, die durch Ihre Heilungszauber der mehrerer Ziele geheilt wurde.
-## Notes-esES: Mostrar en Grid que fue sanada por tus hechizos de curación de múltiples objetivos.
-## Notes-esMX: Mostrar en Grid que fue sanada por sus hechizos de curación de múltiples objetivos.
-## Notes-frFR: Afficher dans Grid à ceux qui vie rendus par vos sorts de soins de multiples cibles.
-## Notes-itIT: Mostrare sulla Grid che è stato curato dalle tue incantesimi curative di multipli obiettivi.
-## Notes-ptBR: Mostrar no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
+## Notes-deDE: Zeigt an Grid, wer durch Ihre Heilungzauber mehrerer Ziele geheilt wurde.
+## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curación de múltiples objetivos.
+## Notes-esMX: Muestra en Grid que fue sanada por sus hechizos de curación de múltiples objetivos.
+## Notes-frFR: Affiche sur Grid à ceux qui vie rendus par vos sorts de soins de multiples cibles.
+## Notes-itIT: Mostra su Grid che è stato curato dalle tue incantesimi curative di multipli obiettivi.
+## Notes-ptBR: Mostra no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
 ## Notes-koKR: 당신의 다중 대상에 대한 치유를 표시합니다.
 ## Notes-zhCN: 在Grid里显示你的群体治疗法术的治疗目标
 ## Notes-zhTW: 在Grid中顯示群體治療法術的目標
