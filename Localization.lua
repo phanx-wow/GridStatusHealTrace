@@ -1,7 +1,7 @@
 ﻿--[[--------------------------------------------------------------------
 	GridStatusHealTrace
 	Shows in Grid who was healed by your multi-target heals.
-	Copyright (c) 2010-2013 Akkorian, Phanx. All rights reserved.
+	Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
 	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 	http://www.curse.com/addons/wow/gridstatushealtrace
@@ -76,6 +76,18 @@ if LOCALE == "ptBR" then
 	L["Remove spell"] = "Remover feitiço"
 	L["Remove a spell from the trace list."] = "Remover um feitiço à lista para seguir."
 	L["Remove %s from the trace list."] = "Remover %s à lista para seguir."
+return end
+
+if LOCALE == "ruRU" then
+	--L["Heal Trace"] = ""
+	--L["Hold time"] = ""
+	--L["Show the status for this many seconds."] = ""
+	--L["Add new spell"] = ""
+	--L["Add another healing spell to trace."] = ""
+	--L["<spell name or spell ID>"] = ""
+	--L["Remove spell"] = ""
+	--L["Remove a spell from the trace list."] = ""
+	--L["Remove %s from the trace list."] = ""
 return end
 
 if LOCALE == "koKR" then -- Last updated 2011-12-12 by Sayclub @ CurseForge
