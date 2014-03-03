@@ -1,7 +1,7 @@
 GridStatusHealTrace
 ===================
 
-* Copyright (c) 2010-2013 Akkorian, Phanx. All rights reserved.
+* Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
 * See the accompanying LICENSE file for license terms.
 * http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 * http://www.curse.com/addons/wow/gridstatushealtrace

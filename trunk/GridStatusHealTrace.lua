@@ -1,7 +1,7 @@
 ﻿--[[--------------------------------------------------------------------
 	GridStatusHealTrace
 	Shows in Grid who was healed by your multi-target heals.
-	Copyright (c) 2010-2013 Akkorian, Phanx. All rights reserved.
+	Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
 	See the accompanying README and LICENSE files for more information.
 	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 	http://www.curse.com/addons/wow/gridstatushealtrace

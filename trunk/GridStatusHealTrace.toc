@@ -3,7 +3,7 @@
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
-## Notes-deDE: Zeigt an Grid, wer durch Ihre Heilungzauber mehrerer Ziele geheilt wurde.
+## Notes-deDE: Zeigt auf Grid, wer durch deine Heilungzauber mehrerer Ziele geheilt wurde.
 ## Notes-esES: Muestra en Grid que fue sanada por tus hechizos de curación de múltiples objetivos.
 ## Notes-esMX: Muestra en Grid que fue sanada por sus hechizos de curación de múltiples objetivos.
 ## Notes-frFR: Affiche sur Grid à ceux qui vie rendus par vos sorts de soins de multiples cibles.
@@ -16,10 +16,10 @@
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Credits: Originally written by Akkorian.
-## X-Copyright: Copyright (c) 2010-2013 Akkorian, Phanx. All rights reserved.
+## X-Copyright: Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
 ## X-License: Some rights reserved. See LICENSE.txt for details.
-## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, koKR, ptBR, ruRU, zhCN, zhTW
-## X-Localizations: enUS, deDE, esES, esMX, frFR, itIT, koKR, ptBR
+## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
+## X-Localizations: enUS, deDE, esES, esMX, frFR, itIT, ptBR, koKR, zhCN, zhTW
 ## X-Website: http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 ## X-Curse-Project-ID: gridstatushealtrace
 ## X-WoWI: 16608
