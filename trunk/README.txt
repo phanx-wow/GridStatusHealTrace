@@ -68,26 +68,30 @@ a PM on either download site to let me know you’ve made changes.
 [3]: http://wow.curseforge.com/addons/gridstatushealtrace/localization/
 
 
-Feedback
---------
-
-Bugs, errors, or other problems:
-	Submit a bug report ticket on either download page.
-
-Feature requests or other suggestions:
-	Submit a feature request ticket system on either download page.
-
-General questions or comments:
-	Post a comment on the WoWInterface download page.
-
-If you need to contact me privately for a reason other than those listed
-above, you can send me a private message on either download site, or
-email me at <addons@phanx.net>.
-
-
 Credits
 -------
 
 GridStatusHealTrace is loosely based on the old GridStatusChainWho by Llyra,
 but it can be shown on icon indicators, it doesn't show crits separately,
 and the spells are configurable. It was originally written by Akkorian.
+
+
+Feedback
+-----------
+
+**Post a comment on WoWInterface.** If you are reporting a bug, please
+include detailed instructions I can follow to reproduce the bug myself,
+whether or not it still happens when all other addons are disabled, and
+the exact text of the first related error message (if any) from BugSack.
+
+If you need to contact me privately, you can send a private message to
+Phanx on either download site, or email me at <addons@phanx.net>.
+**Please note** that I do not provide private addon support or tutoring
+of any kind; post a comment or forum thread instead!
+
+
+License
+----------
+
+Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved. See the
+accompanying LICENSE file for additional information.
