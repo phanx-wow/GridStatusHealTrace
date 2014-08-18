@@ -21,9 +21,9 @@ local LOCALE = GetLocale()
 if LOCALE == "deDE" then
 	L["Heal Trace"] = "Heilung verfolgen"
 	L["Hold time"] = "Haltezeit"
-	L["Show the status for this many seconds."] = "Zeigt den Status für diese viele Sekunden an."
+	L["Show the status for this many seconds."] = "Zeigt den Status so lange wie hier konfiguriert an."
 	L["Add new spell"] = "Zauber hinzufügen"
-	L["Add another healing spell to trace."] = "Fügt einen neuen Heilungszauber hinzu, um zu verfolgen."
+	L["Add another healing spell to trace."] = "Fügt einen weiteren Heilungszauber hinzu, um zu verfolgen."
 	L["<spell name or spell ID>"] = "<namen oder ID des Heilungszauber>"
 	L["Remove spell"] = "Zauber entfernen"
 	L["Remove a spell from the trace list."] = "Entfernt einen Heilungszauber aus der Verfolgungsliste."
@@ -81,12 +81,12 @@ return end
 if LOCALE == "ruRU" then -- Last updated 2013-08-10 by Tromboz @ CurseForge
 	L["Heal Trace"] = "Спелл-лист исцеления"
 	L["Hold time"] = "Время удержания"
-	L["Show the status for this many seconds."] = "Показывать статус именно столько секунд"
+	L["Show the status for this many seconds."] = "Показывать статус именно столько секунд."
 	L["Add new spell"] = "Добавить новое заклинание"
-	L["Add another healing spell to trace."] = "Добавить другое лечащее заклинание в спелл-лист"
-	L["<spell name or spell ID>"] = "<Название или ID заклинания>"
+	L["Add another healing spell to trace."] = "Добавить другое лечащее заклинание в спелл-лист."
+	L["<spell name or spell ID>"] = "<название или ID заклинания>"
 	L["Remove spell"] = "Убрать заклинание"
-	L["Remove a spell from the trace list."] = "Убрать заклинание из спелл-листа"
+	L["Remove a spell from the trace list."] = "Убрать заклинание из спелл-листа."
 	L["Remove %s from the trace list."] = "Убрать %s из спелл-листа."
 return end
 
