@@ -1,5 +1,5 @@
 ## Interface: 50400
-## Version: 5.4.2.wowi:revision
+## Version: 5.4.8.wowi:revision
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
@@ -9,6 +9,7 @@
 ## Notes-frFR: Affiche sur Grid à ceux qui vie rendus par vos sorts de soins de multiples cibles.
 ## Notes-itIT: Mostra su Grid che è stato curato dalle tue incantesimi curative di multipli obiettivi.
 ## Notes-ptBR: Mostra no Grid que foi curado por seu feitiços de cura de múltiplos alvos.
+## Notes-ruRU: Показывает в Grid, кто был вылечен Вашими АОЕ-заклинаниями
 ## Notes-koKR: 당신의 다중 대상에 대한 치유를 표시합니다.
 ## Notes-zhCN: 在Grid里显示你的群体治疗法术的治疗目标
 ## Notes-zhTW: 在Grid中顯示群體治療法術的目標
@@ -19,7 +20,7 @@
 ## X-Copyright: Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
 ## X-License: Some rights reserved. See LICENSE.txt for details.
 ## X-CompatibleLocales: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
-## X-Localizations: enUS, deDE, esES, esMX, frFR, itIT, ptBR, koKR, zhCN, zhTW
+## X-Localizations: enUS, deDE, esES, esMX, frFR, itIT, ptBR, ruRU, koKR, zhCN, zhTW
 ## X-Website: http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 ## X-Curse-Project-ID: gridstatushealtrace
 ## X-WoWI: 16608

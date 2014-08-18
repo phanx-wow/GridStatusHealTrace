@@ -55,11 +55,8 @@ Get the latest version of Grid on [WoWInterface] [1] or [Curse] [2].
 Localization
 ------------
 
-Compatible with English, Deutsch, Español (EU), Español (AL), Français,
-Italiano, Português, Русский, 한국어, 简体中文, and 繁體中文 game clients.
-
-Translated into English, Deutsch, Español, Français, Italiano, Português,
-and 한국어.
+Translated into English, Deutsch, Español, Français, Italiano, 
+Português, Русский, 한국어, 简体中文, and 繁體中文.
 
 To add or update translations for any language, enter them on the
 [GridStatusHealTrace localization page] [3] on WowAce, and then send me
@@ -71,7 +68,7 @@ a PM on either download site to let me know you’ve made changes.
 Credits
 -------
 
-GridStatusHealTrace is loosely based on the old GridStatusChainWho by Llyra,
+GridStatusHealTrace is loosely based on GridStatusChainWho by Llyra,
 but it can be shown on icon indicators, it doesn't show crits separately,
 and the spells are configurable. It was originally written by Akkorian.
 
@@ -93,6 +90,6 @@ on either download site, or email me at <addons@phanx.net>.
 License
 ----------
 
-Copyright (c) 2010-2014 A. Mordecai (Akkorian) and Phanx. All rights reserved.
+Copyright (c) 2010-2014 Akkorian and Phanx. All rights reserved.  
 See the accompanying LICENSE file for information about the conditions
 under which redistribution and modification may be allowed.
