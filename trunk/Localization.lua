@@ -78,16 +78,16 @@ if LOCALE == "ptBR" then
 	L["Remove %s from the trace list."] = "Remover %s à lista para seguir."
 return end
 
-if LOCALE == "ruRU" then
-	--L["Heal Trace"] = ""
-	--L["Hold time"] = ""
-	--L["Show the status for this many seconds."] = ""
-	--L["Add new spell"] = ""
-	--L["Add another healing spell to trace."] = ""
-	--L["<spell name or spell ID>"] = ""
-	--L["Remove spell"] = ""
-	--L["Remove a spell from the trace list."] = ""
-	--L["Remove %s from the trace list."] = ""
+if LOCALE == "ruRU" then -- Last updated 2013-08-10 by Tromboz @ CurseForge
+	L["Heal Trace"] = "Спелл-лист исцеления"
+	L["Hold time"] = "Время удержания"
+	L["Show the status for this many seconds."] = "Показывать статус именно столько секунд"
+	L["Add new spell"] = "Добавить новое заклинание"
+	L["Add another healing spell to trace."] = "Добавить другое лечащее заклинание в спелл-лист"
+	L["<spell name or spell ID>"] = "<Название или ID заклинания>"
+	L["Remove spell"] = "Убрать заклинание"
+	L["Remove a spell from the trace list."] = "Убрать заклинание из спелл-листа"
+	L["Remove %s from the trace list."] = "Убрать %s из спелл-листа."
 return end
 
 if LOCALE == "koKR" then -- Last updated 2011-12-12 by Sayclub @ CurseForge
