@@ -43,13 +43,15 @@ for _, spellID in ipairs({
 	-- Priest
 	121148, -- Cascade
 	34861,  -- Circle of Healing
+	155245, -- Clarity of Purpose -- NEEDS CHECK
 	64844,  -- Divine Hymn
 	110745, -- Divine Star (holy version)
 	122128, -- Divine Star (shadow version)
 	120692, -- Halo (holy version)
 	120696, -- Halo (shadow version)
-	23455,  -- Holy Nova
+	132157, -- Holy Nova -- NEEDS CHECK
 --	88686,  -- Holy Word: Sanctuary
+	129250, -- Power Word: Solace -- NEEDS CHECK
 	596,    -- Prayer of Healing
 	-- Shaman
 	1064,   -- Chain Heal
