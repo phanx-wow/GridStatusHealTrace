@@ -53,6 +53,7 @@ for _, spellID in ipairs({
 	596,    -- Prayer of Healing
 	-- Shaman
 	1064,   -- Chain Heal
+--	73921,  -- Healing Rain
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
 	if name then
