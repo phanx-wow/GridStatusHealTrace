@@ -28,7 +28,7 @@ GridStatusHealTrace.defaultDB = {
 for _, spellID in ipairs({
 	-- Druid
 --	44203,  -- Tranquility
-	102792, -- Wild Mushroom: Bloom
+--	81262,  -- Wild Mushroom
 	-- Monk
 	130654, -- Chi Burst
 	124040, -- Chi Torpedo
