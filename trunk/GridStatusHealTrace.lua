@@ -89,7 +89,6 @@ local optionsForStatus = {
 		desc = L["Add another healing spell to trace."],
 		type = "input",
 		usage = L["<spell name or spell ID>"],
-		dialogControl = type(LibStub("AceGUI-3.0").WidgetVersions["Aura_EditBox"]) == "number" and "Aura_EditBox" or nil,
 		get = false,
 		set = function(_, v)
 			GridStatusHealTrace:AddSpell(string.trim(v))
@@ -108,7 +107,7 @@ local optionsForStatus = {
 
 do
 	local function removeSpell_func(info)
-		self:RemoveSpell(info.arg)
+		GridStatusHealTrace:RemoveSpell(info.arg)
 	end
 
 	function GridStatusHealTrace:AddSpell(name, icon)
