@@ -30,11 +30,14 @@ for _, spellID in ipairs({
 --	44203,  -- Tranquility
 --	81262,  -- Wild Mushroom
 	-- Monk
-	130654, -- Chi Burst
-	124040, -- Chi Torpedo
-	115106, -- Chi Wave
-	115464, -- Healing Sphere
+	130654, -- Chi Burst -- NEEDS CHECK
+	123986, -- Chi Burst -- NEW?
+	124040, -- Chi Torpedo -- NEEDS CHECK
+	115008, -- Chi Torpedo -- NEW?
+	115098, -- Chi Wave
+	101546, -- Spinning Crane Kick -- NEEDS CHECK
 	116670, -- Uplift
+	124101, -- Zen Sphere: Detonate -- NEEDS CHECK
 	-- Paladin
 	114852, -- Holy Prism (enemy target)
 	114871, -- Holy Prism (friendly target)
@@ -161,10 +164,16 @@ end
 
 function GridStatusHealTrace:PostEnable()
 	playerGUID = UnitGUID("player")
+	self:RegisterEvent("SPELLS_CHANGED", "OnStatusEnable")
 end
 
 function GridStatusHealTrace:OnStatusEnable(status)
-	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	for name in pairs(spells) do
+		if GetSpellInfo(name) then
+			return self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+		end
+	end
+	self:OnStatusDisable(status)
 end
 
 function GridStatusHealTrace:OnStatusDisable(status)
