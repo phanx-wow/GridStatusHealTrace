@@ -1,5 +1,5 @@
-## Interface: 60000
-## Version: 6.0.2.50
+## Interface: 60100
+## Version: @project-version@
 
 ## Title: GridStatusHealTrace
 ## Notes: Shows in Grid who was healed by your multi-target heals.
@@ -17,7 +17,7 @@
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Credits: Originally written by Akkorian.
-## X-Copyright: Copyright (c) 2010-2014 Akkorian, Phanx. All rights reserved.
+## X-Copyright: Copyright (c) 2010-2015 Akkorian, Phanx. All rights reserved.
 ## X-Website: https://github.com/Phanx/GridStatusHealTrace
 
 ## Dependencies: Grid

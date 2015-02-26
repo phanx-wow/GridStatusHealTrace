@@ -1,3 +1,7 @@
+### Version 6.1.0.19 (2014 Oct 26)
+
+* Updated for WoW 6.1
+
 ### Version 6.0.2.50 (2014 Oct 26)
 
 * Fixed the options for removing spells
