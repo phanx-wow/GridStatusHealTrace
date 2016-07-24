@@ -1,11 +1,17 @@
 ﻿--[[--------------------------------------------------------------------
 	GridStatusHealTrace
 	Shows in Grid who was healed by your multi-target heals.
-	Copyright (c) 2010-2015 Akkorian <akkorian@hotmail.com>.
-	Copyright (c) 2010-2015 Phanx <addons@phanx.net>. All rights reserved.
+	Copyright (c) 2010-2011 Akkorian <akkorian@armord.net>. All rights reserved.
+	Copyright (c) 2011-2016 Phanx <addons@phanx.net>. All rights reserved.
 	http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html
 	http://www.curse.com/addons/wow/gridstatushealtrace
 	https://github.com/Phanx/GridStatusHealTrace
+
+	TODO:
+	Listen for totem/guardian create/destroy events in CLEU, keep a list
+	of their GUIDs, and match against the list instead of only matching
+	against the player's GUID, so heals from totems/mushrooms/etc can
+	be traced.
 ----------------------------------------------------------------------]]
 
 local _, ns = ...
@@ -28,38 +34,41 @@ GridStatusHealTrace.defaultDB = {
 }
 for _, spellID in ipairs({
 	-- Druid
---	44203,  -- Tranquility
---	81262,  -- Wild Mushroom
+--	81262,  -- Efflorescence (doesn't work: caster not player)
+--	740,    -- Tranquility (ignored: channelled + hits all targets)
 	-- Monk
-	130654, -- Chi Burst -- NEEDS CHECK
-	123986, -- Chi Burst -- NEW?
-	124040, -- Chi Torpedo -- NEEDS CHECK
-	115008, -- Chi Torpedo -- NEW?
+	123986, -- Chi Burst
 	115098, -- Chi Wave
-	101546, -- Spinning Crane Kick -- NEEDS CHECK
-	116670, -- Uplift
-	124101, -- Zen Sphere: Detonate -- NEEDS CHECK
+	191840, -- Essence Font
+--	196725, -- Refreshing Jade Wind
+	116670, -- Vivify
 	-- Paladin
-	114852, -- Holy Prism (enemy target)
-	114871, -- Holy Prism (friendly target)
-	82327,  -- Holy Radiance
+	119952, -- Arcing Light (talent: Light's Hammer)
+--	183415, -- Aura of Mercy (ignored: passive + too small to matter?)
+	114852, -- Holy Prism (talent, cast on enemy target)
+	114871, -- Holy Prism (talent, cast on friendly target)
 	85222,  -- Light of Dawn
 	-- Priest
-	121148, -- Cascade
-	34861,  -- Circle of Healing
-	155245, -- Clarity of Purpose -- NEEDS CHECK
-	64844,  -- Divine Hymn
-	110745, -- Divine Star (holy version)
-	122128, -- Divine Star (shadow version)
-	120692, -- Halo (holy version)
-	120696, -- Halo (shadow version)
-	132157, -- Holy Nova -- NEEDS CHECK
---	88686,  -- Holy Word: Sanctuary
-	129250, -- Power Word: Solace -- NEEDS CHECK
+	32546,  -- Binding Heal -- TODO: ignore on self?
+	204883, -- Circle of Healing
+--	64843,  -- Divine Hymn (ignored: channelled + hits all targets + applies a buff)
+	110745, -- Divine Star (talent, disc version)
+	110744, -- Divine Star (talent, holy version)
+	120692, -- Halo (talent, disc version)
+	120517, -- Halo (talent, holy version)
+	132157, -- Holy Nova
+	34861,  -- Holy Word: Sanctify
+	194509, -- Power Word: Radiance -- NEEDS CHECK
 	596,    -- Prayer of Healing
+	204065, -- Shadow Covenant -- NEEDS CHECK
+	200128, -- Trail of Light -- NEEDS CHECK, might show as Flash Heal on secondary target
 	-- Shaman
 	1064,   -- Chain Heal
---	73921,  -- Healing Rain
+--	157503, -- Cloudburst  (doesn't work, caster not player)
+--	73920,  -- Healing Rain -- NEEDS CHECK, is it big enough to care about?
+--	5394,   -- Healing Stream Totem (doesn't work, caster not player)
+--	108280, -- Healing Tide Totem (doesn't work, caster not player)
+	197995, -- Wellspring
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
 	if name then
@@ -115,19 +124,21 @@ do
 	end
 
 	function GridStatusHealTrace:AddSpell(name, icon)
-		local id, _ = name:match("(%d+)")
-		if id then
-			name, _, icon = GetSpellInfo(tonumber(id))
-		elseif type(icon) ~= "string" then
-			icon = nil
+		if name:match("^(%d+)$") then
+			local _
+			name, _, icon = GetSpellInfo(name)
 		end
 
 		if not name then return end
 
+		if type(icon) == "boolean" then
+			icon = nil
+		end
+
 		self.db.profile.alert_healTrace.spells[name] = icon or true
 
 		optionsForStatus.removeSpell.args[name] = {
-			name = string.format("|T%s:0:0:0:0:32:32:2:30:2:30|t %s", icon or "", name),
+			name = string.format("\124T%s:0:0:0:0:32:32:3:29:3:29\124t %s", icon or "Interface\\ICONS\\INV_Misc_QuestionMark", name),
 			desc = string.format(L["Remove %s from the trace list."], name),
 			type = "execute",
 			func = removeSpell_func,
@@ -157,6 +168,14 @@ function GridStatusHealTrace:PostInitialize()
 
 	settings = self.db.profile.alert_healTrace
 	spells = settings.spells
+
+	if not settings.version or settings.version < 1 then
+		wipe(spells)
+		for k, v in pairs(self.defaultDB.alert_healTrace.spells) do
+			spells[k] = v
+		end
+		settings.version = 1
+	end
 
 	for name, icon in pairs(spells) do
 		self:AddSpell(name, icon)

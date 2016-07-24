@@ -1,3 +1,9 @@
+### Version 7.0.3.0 (2015 Jul 24)
+
+* Updated for WoW 7.0 (Legion)
+* This update resets the spell list. You'll need to re-add any custom spells, assuming they still exist in the game.
+* The new spell list is based on data from Wowhead. If something isn't correct for your class/spec, please get the correct spell ID from the combat log and post a ticket or comment to let me know!
+
 ### Version 6.1.0.19 (2014 Oct 26)
 
 * Updated for WoW 6.1
