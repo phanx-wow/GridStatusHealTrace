@@ -12,5 +12,5 @@ GridStatusHealTrace
 **ZH-CN** — 在Grid里显示你的群体治疗法术的治疗目标。  
 **ZH-TW** — 在Grid中顯示群體治療法術的目標。
 
-* [Download from Curse](http://www.curse.com/addons/wow/gridstatushealtrace)
+* [Download from Curse](https://mods.curse.com/addons/wow/gridstatushealtrace)
 * [Download from WoWInterface](http://www.wowinterface.com/downloads/info16608-GridStatusHealTrace.html)
