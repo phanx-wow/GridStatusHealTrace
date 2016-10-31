@@ -19,6 +19,7 @@
 ## X-Credits: Originally written by Akkorian.
 ## X-Copyright: Copyright (c) 2010-2016 Akkorian, Phanx. All rights reserved.
 ## X-Website: https://github.com/Phanx/GridStatusHealTrace
+## X-WoWI-ID: 16608
 
 ## Dependencies: Grid
 
