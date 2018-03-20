@@ -216,6 +216,9 @@ function GridStatusHealTrace:PostReset()
 			self:AddSpell(name, icon)
 		end
 	end
+	if self.db.profile.alert_healTrace.enable then
+		self:RegisterEvent("SPELLS_CHANGED", "OnStatusEnable")
+	end
 end
 
 ------------------------------------------------------------------------
