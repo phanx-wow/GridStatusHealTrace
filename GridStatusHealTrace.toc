@@ -1,4 +1,4 @@
-## Interface: 70100
+## Interface: 80000
 ## Version: @project-version@
 
 ## Title: GridStatusHealTrace
@@ -17,7 +17,7 @@
 ## Author: Phanx
 ## X-Email: addons@phanx.net
 ## X-Credits: Originally written by Akkorian.
-## X-Copyright: Copyright (c) 2010-2016 Akkorian, Phanx. All rights reserved.
+## X-License: All Rights Reserved
 ## X-Website: https://github.com/Phanx/GridStatusHealTrace
 ## X-WoWI-ID: 16608
 

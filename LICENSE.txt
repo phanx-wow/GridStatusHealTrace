@@ -1,5 +1,5 @@
 Copyright (c) 2010-2011 Akkorian <akkorian@hotmail.com>
-Copyright (c) 2011-2016 Phanx <addons@phanx.net>
+Copyright (c) 2011-2018 Phanx <addons@phanx.net>
 
 All rights reserved.
 
