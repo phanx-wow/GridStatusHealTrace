@@ -19,7 +19,9 @@ local L = ns.L
 
 local GridStatusHealTrace = Grid:NewStatusModule("GridStatusHealTrace")
 local active, spellOrder, playerGUID, settings, spells = {}, {}
-
+-- fix for Healing tide
+local totemguid
+local healingtide = select(3, GetSpellInfo(108280))
 ------------------------------------------------------------------------
 
 GridStatusHealTrace.defaultDB = {
@@ -39,9 +41,10 @@ for _, spellID in ipairs({
 	-- Monk
 	123986, -- Chi Burst
 	115098, -- Chi Wave
-	191840, -- Essence Font
+--	191840, -- Essence Font (It shouldn't be added. It is not direct heals)
 --	196725, -- Refreshing Jade Wind
 	116670, -- Vivify
+	274912, -- Rising Mist (talent)
 	-- Paladin
 	119952, -- Arcing Light (talent: Light's Hammer)
 --	183415, -- Aura of Mercy (ignored: passive + too small to matter?)
@@ -64,11 +67,13 @@ for _, spellID in ipairs({
 	200128, -- Trail of Light -- NEEDS CHECK, might show as Flash Heal on secondary target
 	-- Shaman
 	1064,   -- Chain Heal
---	157503, -- Cloudburst  (doesn't work, caster not player)
+	157503, -- Cloudburst (It works now)
 --	73920,  -- Healing Rain -- NEEDS CHECK, is it big enough to care about?
 --	5394,   -- Healing Stream Totem (doesn't work, caster not player)
---	108280, -- Healing Tide Totem (doesn't work, caster not player)
+	108280, -- Healing Tide Totem
+	114083, -- Restorative Mists (talent, Ascendance)
 	197995, -- Wellspring
+	207778, -- Downpour
 }) do
 	local name, _, icon = GetSpellInfo(spellID)
 	if name then
@@ -242,30 +247,36 @@ timerFrame:SetScript("OnUpdate", function(self, elapsed)
 	end
 end)
 
-function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED(_, _, event)
-	local _, sourceGUID, sourceName, _, _, destGUID, destName, _, _, spellID, spellName = CombatLogGetCurrentEventInfo()
-	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[spellName] then
-		return
+function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED()
+	local _, event, _, sourceGUID, _, _, _, destGUID, _, _, _, spellID, spellName = CombatLogGetCurrentEventInfo()
+	if sourceGUID == playerGUID and event == "SPELL_SUMMON" and spells[spellName] == healingtide then
+		totemguid = destGUID -- healing tide fix
 	end
+	if event == "SPELL_HEAL" and ((sourceGUID == playerGUID and spells[spellName]) or sourceGUID == totemguid) then
+		local spellIcon
+		if sourceGUID == totemGUID then
+			spellIcon = healingtide
+		else
+			spellIcon = spells[spellName]
+		end
+		if type(spellIcon) == "boolean" then
+			local name, _, icon = GetSpellInfo(spellID)
+			self:RemoveSpell(name)
+			self:AddSpell(name, icon)
+			spellIcon = icon
+		end
 
-	local spellIcon = spells[spellName]
-	if type(spellIcon) == "boolean" then
-		local name, _, icon = GetSpellInfo(spellID)
-		self:RemoveSpell(name)
-		self:AddSpell(name, icon)
-		spellIcon = icon
+		self.core:SendStatusGained(destGUID, "alert_healTrace",
+			settings.priority,
+			settings.range,
+			settings.color,
+			spellName,
+			nil,
+			nil,
+			spellIcon
+		)
+
+		active[destGUID] = settings.holdTime
+		timerFrame:Show()
 	end
-
-	self.core:SendStatusGained(destGUID, "alert_healTrace",
-		settings.priority,
-		settings.range,
-		settings.color,
-		spellName,
-		nil,
-		nil,
-		spellIcon
-	)
-
-	active[destGUID] = settings.holdTime
-	timerFrame:Show()
 end
