@@ -242,8 +242,8 @@ timerFrame:SetScript("OnUpdate", function(self, elapsed)
 	end
 end)
 
-function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED(_, _, event)
-	local _, sourceGUID, sourceName, _, _, destGUID, destName, _, _, spellID, spellName = CombatLogGetCurrentEventInfo()
+function GridStatusHealTrace:COMBAT_LOG_EVENT_UNFILTERED()
+	local _, event, _, sourceGUID, sourceName, _, _, destGUID, destName, _, _, spellID, spellName = CombatLogGetCurrentEventInfo()
 	if sourceGUID ~= playerGUID or event ~= "SPELL_HEAL" or not spells[spellName] then
 		return
 	end
